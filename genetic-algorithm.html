@@ -1,4 +1,12 @@
 <!DOCTYPE html>
 <html>
-Hello World!
+  <button autofocus id="button1">Click me!</button>
+  <div id="output">Hello World!</div>
+<script>
+  "use strict";
+
+  button1.onclick = function () {
+    output.innerText = output.innerText + " Clicked!";
+  }
+</script>
 </html>
