@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <button autofocus id="button1">Click me!</button>
+  <button autofocus id="button1">Click to add an animal</button>
   <div id="output">Hello World!</div>
 <script>
   "use strict";
 
+  var animal = [];
+
+  function randomZeroToNine() {
+    var randomZeroToAlmostOne = Math.random();
+    var randomZeroToAlmostTen = 10 * randomZeroToAlmostOne;
+    var randomIntegerZeroToNine = Math.floor(randomZeroToAlmostTen);
+    return randomIntegerZeroToNine;
+  }
+
+  function makeRandomAnimal() {
+    var babyAnimal = [];
+
+    for (var i = 0; i < 5; i = i + 1) {
+      babyAnimal.push(randomZeroToNine());
+    }
+
+    return babyAnimal;
+  }
+
   button1.onclick = function () {
-    output.innerText = output.innerText + " Clicked!";
+    animal = makeRandomAnimal();
+    output.innerText = JSON.stringify(animal);
   }
 </script>
 </html>
