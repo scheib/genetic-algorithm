@@ -8,13 +8,15 @@
     </style>
   </head>
   <body>
-    <button autofocus id="button1">Click to add an animal</button>
+    <button autofocus id="animalButton">Click to add an animal</button>
+    <button id="babyButton">Click to add an baby animal</button>
     <div id="output">Hello World!</div>
     <script>
       "use strict";
 
       var numbersPerAnimal = 8;
-      var animals = [];
+      var animalsAdded = [];
+      var animalsBorn = [];
 
       function randomZeroToNine() {
         var randomZeroToAlmostOne = Math.random();
@@ -33,10 +35,31 @@
         return babyAnimal;
       }
 
-      button1.onclick = function () {
+      function makeBabyAnimal() {
+        var parent1 = animalsAdded[randomZeroToNine()];
+        var parent2 = animalsAdded[randomZeroToNine()];
+        var baby = [];
+        baby[0] = parent1[0];
+        baby[1] = parent2[1];
+        baby[2] = parent1[2];
+        baby[3] = parent2[3];
+        baby[4] = parent1[4];
+        baby[5] = parent2[5];
+        baby[6] = parent1[6];
+        baby[7] = parent2[7];
+        return baby;
+      }
+
+      animalButton.onclick = function () {
         var animal = makeRandomAnimal();
-        animals.push(animal);
-        output.innerText = JSON.stringify(animals);
+        animalsAdded.push(animal);
+        output.innerText = JSON.stringify(animalsAdded) + "\n" + JSON.stringify(animalsBorn);
+      }
+
+      babyButton.onclick = function () {
+        var baby = makeBabyAnimal();
+        animalsBorn.push(baby);
+        output.innerText = JSON.stringify(animalsAdded) + "\n" + JSON.stringify(animalsBorn);
       }
     </script>
   </body>
