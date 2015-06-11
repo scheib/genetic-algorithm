@@ -13,7 +13,7 @@
     <script>
       "use strict";
 
-      var animal = [];
+      var animals = [];
 
       function randomZeroToNine() {
         var randomZeroToAlmostOne = Math.random();
@@ -33,8 +33,9 @@
       }
 
       button1.onclick = function () {
-        animal = makeRandomAnimal();
-        output.innerText = JSON.stringify(animal);
+        var animal = makeRandomAnimal();
+        animals.push(animal);
+        output.innerText = JSON.stringify(animals);
       }
     </script>
   </body>
