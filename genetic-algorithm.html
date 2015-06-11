@@ -50,16 +50,20 @@
         return baby;
       }
 
+      function updateAnimalsToText() {
+        output.innerText = JSON.stringify(animalsAdded) + "\n" + JSON.stringify(animalsBorn);
+      }
+
       animalButton.onclick = function () {
         var animal = makeRandomAnimal();
         animalsAdded.push(animal);
-        output.innerText = JSON.stringify(animalsAdded) + "\n" + JSON.stringify(animalsBorn);
+        updateAnimalsToText();
       }
 
       babyButton.onclick = function () {
         var baby = makeBabyAnimal();
         animalsBorn.push(baby);
-        output.innerText = JSON.stringify(animalsAdded) + "\n" + JSON.stringify(animalsBorn);
+        updateAnimalsToText();
       }
     </script>
   </body>
