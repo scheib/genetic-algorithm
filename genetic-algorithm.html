@@ -13,6 +13,7 @@
     <script>
       "use strict";
 
+      var numbersPerAnimal = 8;
       var animals = [];
 
       function randomZeroToNine() {
@@ -25,7 +26,7 @@
       function makeRandomAnimal() {
         var babyAnimal = [];
 
-        for (var i = 0; i < 5; i = i + 1) {
+        for (var i = 0; i < numbersPerAnimal; i = i + 1) {
           babyAnimal.push(randomZeroToNine());
         }
 
