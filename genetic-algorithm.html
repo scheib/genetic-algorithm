@@ -15,8 +15,15 @@
 
       var numbersPerAnimal = 8;
       var animalsPerGeneration = 10;
-      var animalsAdded = [];
-      var animalsBorn = [];
+
+      // Animals are an array of numbers. Example: [1,2,3]
+      // A Generation of Animals, is an Array of Animals. [[1,2,3], [5,6,2]]
+      // Save all Generations in an array animalGenerations.
+      // Special Generations:
+      //   animalGenerations[0] == Babies go here.
+      //   animalGenerations[1] == Parents of babies come from here.
+      //   animalGenerations[2] and later are older ancesters.
+      var animalGenerations = [];
 
       function randomZeroToNine() {
         var randomZeroToAlmostOne = Math.random();
@@ -43,8 +50,8 @@
       }
 
       function makeBabyAnimal() {
-        var parent1 = animalsAdded[randomIntegerZeroToAlmost(animalsAdded.length)];
-        var parent2 = animalsAdded[randomIntegerZeroToAlmost(animalsAdded.length)];
+        var parent1 = animalGenerations[1][randomIntegerZeroToAlmost(animalsPerGeneration)];
+        var parent2 = animalGenerations[1][randomIntegerZeroToAlmost(animalsPerGeneration)];
         var baby = [];
         baby[0] = parent1[0];
         baby[1] = parent2[1];
@@ -58,20 +65,34 @@
       }
 
       function updateAnimalsToText() {
-        output.innerText = JSON.stringify(animalsAdded) + "\n" + JSON.stringify(animalsBorn);
+        var text = "Generations:\n";
+        for (var i = 0; i < animalGenerations.length; i = i + 1) {
+          text += "\n" + i + ":\n";
+          text += JSON.stringify(animalGenerations[i]);
+        }
+        output.innerText = text;
+      }
+
+      function makeNewGeneration() {
+        // Make an empty array at the beginning of the generations.
+        animalGenerations.unshift([]);
       }
 
       function makeRandomGenerationOfAnimals() {
+        makeNewGeneration();
         for (var i = 0; i < animalsPerGeneration; i = i + 1) {
           var animal = makeRandomAnimal();
-          animalsAdded.push(animal);
+          animalGenerations[0].push(animal);
         }
         updateAnimalsToText();
       }
 
       babyButton.onclick = function () {
+        if (animalGenerations[0].length >= animalsPerGeneration) {
+          makeNewGeneration();
+        }
         var baby = makeBabyAnimal();
-        animalsBorn.push(baby);
+        animalGenerations[0].push(baby);
         updateAnimalsToText();
       }
 
