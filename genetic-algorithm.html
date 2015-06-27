@@ -8,13 +8,13 @@
     </style>
   </head>
   <body>
-    <button autofocus id="animalButton">Click to add an animal</button>
-    <button id="babyButton">Click to add an baby animal</button>
+    <button autofocus id="babyButton">Click to add an baby animal</button>
     <div id="output">Hello World!</div>
     <script>
       "use strict";
 
       var numbersPerAnimal = 8;
+      var animalsPerGeneration = 10;
       var animalsAdded = [];
       var animalsBorn = [];
 
@@ -54,9 +54,11 @@
         output.innerText = JSON.stringify(animalsAdded) + "\n" + JSON.stringify(animalsBorn);
       }
 
-      animalButton.onclick = function () {
-        var animal = makeRandomAnimal();
-        animalsAdded.push(animal);
+      function makeRandomGenerationOfAnimals() {
+        for (var i = 0; i < animalsPerGeneration; i = i + 1) {
+          var animal = makeRandomAnimal();
+          animalsAdded.push(animal);
+        }
         updateAnimalsToText();
       }
 
@@ -65,6 +67,8 @@
         animalsBorn.push(baby);
         updateAnimalsToText();
       }
+
+      makeRandomGenerationOfAnimals();
     </script>
   </body>
 </html>
