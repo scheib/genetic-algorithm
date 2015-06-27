@@ -25,6 +25,13 @@
         return randomIntegerZeroToNine;
       }
 
+      function randomIntegerZeroToAlmost(maximumInteger) {
+        var randomZeroToAlmostOne = Math.random();
+        var randomZeroToAlmostMax = maximumInteger * randomZeroToAlmostOne;
+        var randomIntegerZeroToZeroToAlmostMax = Math.floor(randomZeroToAlmostMax);
+        return randomIntegerZeroToZeroToAlmostMax;
+      }
+
       function makeRandomAnimal() {
         var babyAnimal = [];
 
@@ -36,8 +43,8 @@
       }
 
       function makeBabyAnimal() {
-        var parent1 = animalsAdded[randomZeroToNine()];
-        var parent2 = animalsAdded[randomZeroToNine()];
+        var parent1 = animalsAdded[randomIntegerZeroToAlmost(animalsAdded.length)];
+        var parent2 = animalsAdded[randomIntegerZeroToAlmost(animalsAdded.length)];
         var baby = [];
         baby[0] = parent1[0];
         baby[1] = parent2[1];
